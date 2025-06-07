@@ -5,6 +5,7 @@ import colors from '../constants/colors';
 import commonStyles from '../constants/styles'; // Import common styles
 
 export default function LoginScreen({ navigation }) {
+  
   return (
     <View style={commonStyles.container}>
       <Text style={commonStyles.title}>Login</Text>
