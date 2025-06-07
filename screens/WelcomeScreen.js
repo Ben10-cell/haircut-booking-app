@@ -1,26 +1,17 @@
+// screens/WelcomeScreen.js
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { GlobalStyles } from '../constants/GlobalStyles';
+import colors from '../constants/colors';
+import commonStyles from '../constants/styles'; // Import common styles
 
 export default function WelcomeScreen({ navigation }) {
   return (
-    <View style={GlobalStyles.container}>
-      <Text style={styles.title}>Haircut Booking</Text>
-      <Button
-        title="Login"
-        onPress={() => navigation.navigate('LoginScreen.js')}
-      />
-      <Button
-        title="Sign Up"
-        onPress={() => navigation.navigate('SignupScreen.js')}
-      />
+    <View style={commonStyles.container}>
+      <Text style={commonStyles.title}>Welcome to TrimTime</Text>
+      <Text style={commonStyles.paragraph}>Pumi is stingy, agressive, cool, achef</Text>
+      <Button title="Log In" onPress={() => navigation.navigate('Login')} color={colors.primary} />
+      <Button title="Sign Up" onPress={() => navigation.navigate('Signup')} color={colors.secondary} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  }
-});
+// No local styles needed if all are covered by commonStyles
