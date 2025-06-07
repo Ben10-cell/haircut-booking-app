@@ -1,17 +1,30 @@
 // services/firebaseConfig.js
 
-// Your Firebase configuration
-// This object is now just exported, not used to initialize Firebase here.
-const firebaseConfig = {
-  apiKey: "AIzaSyDA-oRt6E9qzxX5EDbjhTdL2cU8-xvXHVs",
-  authDomain: "reserveme-8b6a6.firebaseapp.com",
-  databaseURL: "https://reserveme-8b6a6-default-rtdb.firebaseio.com",
-  projectId: "reserveme-8b6a6",
-  storageBucket: "reserveme-8b6a6.firebasestorage.app",
-  messagingSenderId: "799896568782",
-  appId: "1:799896568782:web:1300c18633676a9886219f",
-  measurementId: "G-B0SJRTX5WD"
-};
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 
-// Export only the configuration object
-export { firebaseConfig };
+// services/firebaseConfig.js
+
+// ─── 1. Define your config object EXACTLY ─────────────────────────────────────
+export const firebaseConfig = {
+  apiKey: 'AIzaSyDA-oRt6E9qzxX5EDbjhTdL2cU8-xvXHVs',
+  authDomain: 'reserveme-8b6a6.firebaseapp.com',
+  databaseURL: 'https://reserveme-8b6a6-default-rtdb.firebaseio.com',
+  projectId: 'reserveme-8b6a6',
+  storageBucket: 'reserveme-8b6a6.firebasestorage.app',
+  messagingSenderId: '799896568782',
+  appId: '1:799896568782:web:1300c18633676a9886219f',
+  measurementId: 'G-B0SJRTX5WD',
+};
+// ────────────────────────────────────────────────────────────────────────────────
+
+// Initialize Firebase App
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firestore and Auth instances
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Export Firestore and Auth so other parts of your app can import them
+export { db, auth };

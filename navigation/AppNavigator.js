@@ -14,7 +14,7 @@ import RegisterTermsScreen from '../screens/RegisterTermsScreen';
 import TermsScreen from '../screens/TermsScreen';
 
 // --- Tab Navigators (Main App Flows) ---
-import ClientTabNavigator from './ClientTabNavigator';
+import ClientStackNavigator from './ClientStackNavigator';
 import BarberTabNavigator from './BarberTabNavigator';
 
 const Stack = createStackNavigator();
@@ -35,7 +35,7 @@ export default function AppNavigator() {
 
       {/* Client Flow - Now uses a Tab Navigator */}
       {/* The name 'ClientApp' here allows you to navigate to the client's tabbed experience */}
-      <Stack.Screen name="ClientApp" component={ClientTabNavigator} />
+      <Stack.Screen name="ClientApp" component={ClientStackNavigator} />
       {/* Note: Individual client screens like Booking and ClientList are now part of ClientTabNavigator.
           You might still need to navigate to them directly from within the Client Dashboard or other tab screens
           if you want to push a new screen *on top* of the tabs using a nested stack navigator inside a tab.
