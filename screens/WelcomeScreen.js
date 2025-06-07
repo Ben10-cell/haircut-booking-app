@@ -8,6 +8,7 @@ export default function WelcomeScreen({ navigation }) {
   return (
     <View style={commonStyles.container}>
       <Text style={commonStyles.title}>Welcome to TrimTime</Text>
+      <Text style={commonStyles.paragraph}>Pumi is stingy, agressive, cool, achef</Text>
       <Button title="Log In" onPress={() => navigation.navigate('Login')} color={colors.primary} />
       <Button title="Sign Up" onPress={() => navigation.navigate('Signup')} color={colors.secondary} />
     </View>
