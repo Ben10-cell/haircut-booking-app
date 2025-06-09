@@ -1,6 +1,6 @@
 // screens/BarberSettings.js
 import React, { useState } from 'react';
-import { View, Text, Button, Switch, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Button, Switch, TextInput, StyleSheet, Alert } from 'react-native';
 import colors from '../constants/colors';
 import commonStyles from '../constants/styles';
 
@@ -9,16 +9,16 @@ export default function BarberSettings({ navigation }) {
   const [displayName, setDisplayName] = useState('Barber John');
 
   const handleSave = () => {
-    // Placeholder logic for saving settings
     console.log('Settings saved:', {
       notificationsEnabled,
       displayName,
     });
-    alert('Settings saved!');
+
+    Alert.alert('Success', `Settings saved for ${displayName}`);
   };
 
   return (
-    <View style={commonStyles.container}>
+    <View style={[commonStyles.container, { paddingHorizontal: 16 }]}>
       <Text style={commonStyles.title}>Barber Settings</Text>
 
       <View style={styles.section}>
@@ -28,6 +28,8 @@ export default function BarberSettings({ navigation }) {
           value={displayName}
           onChangeText={setDisplayName}
           placeholder="Enter your display name"
+          accessible={true}
+          accessibilityLabel="Display name input"
         />
       </View>
 
@@ -37,6 +39,8 @@ export default function BarberSettings({ navigation }) {
           value={notificationsEnabled}
           onValueChange={setNotificationsEnabled}
           thumbColor={notificationsEnabled ? colors.primary : '#ccc'}
+          accessible={true}
+          accessibilityLabel="Enable notifications switch"
         />
       </View>
 
