@@ -1,8 +1,8 @@
 // screens/BookingScreen.js
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, ActivityIndicator, Alert } from 'react-native';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../services/firebaseConfig'; // Ensure this is configured
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'; // Added serverTimestamp
+import { db } from '../services/firebaseConfig';
 import colors from '../constants/colors';
 import commonStyles from '../constants/styles';
 
@@ -19,15 +19,15 @@ export default function BookingScreen({ route, navigation }) {
         date,
         clientId: 'client_test_001', // Replace with authenticated user ID later
         status: 'pending',
-        createdAt: new Date().toISOString(),
+        createdAt: serverTimestamp(), // Changed from ISO string to serverTimestamp
       });
       setLoading(false);
-      Alert.alert('Success', 'Your appointment has been booked!');
+      Alert.alert('Success', 'Your appointment has been successfully booked!');
       navigation.navigate('ClientHome');
     } catch (error) {
       console.error('Booking failed:', error);
       setLoading(false);
-      Alert.alert('Error', 'Failed to book your appointment.');
+      Alert.alert('Error', 'Failed to book your appointment. Please try again.');
     }
   };
 
