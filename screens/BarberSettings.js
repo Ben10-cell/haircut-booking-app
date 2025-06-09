@@ -1,3 +1,4 @@
+```javascript
 // screens/BarberSettings.js
 import React, { useState } from 'react';
 import { View, Text, Button, Switch, TextInput, StyleSheet, Alert } from 'react-native';
@@ -13,12 +14,11 @@ export default function BarberSettings({ navigation }) {
       notificationsEnabled,
       displayName,
     });
-
-    Alert.alert('Success', `Settings saved for ${displayName}`);
+    Alert.alert('Success', 'Your settings have been saved.');
   };
 
   return (
-    <View style={[commonStyles.container, { paddingHorizontal: 16 }]}>
+    <View style={commonStyles.container}>
       <Text style={commonStyles.title}>Barber Settings</Text>
 
       <View style={styles.section}>
@@ -28,8 +28,8 @@ export default function BarberSettings({ navigation }) {
           value={displayName}
           onChangeText={setDisplayName}
           placeholder="Enter your display name"
-          accessible={true}
-          accessibilityLabel="Display name input"
+          autoCapitalize="words"
+          autoCorrect={false}
         />
       </View>
 
@@ -39,16 +39,16 @@ export default function BarberSettings({ navigation }) {
           value={notificationsEnabled}
           onValueChange={setNotificationsEnabled}
           thumbColor={notificationsEnabled ? colors.primary : '#ccc'}
-          accessible={true}
-          accessibilityLabel="Enable notifications switch"
         />
       </View>
 
-      <Button
-        title="Save Changes"
-        onPress={handleSave}
-        color={colors.primary}
-      />
+      <View style={{ marginTop: 10 }}>
+        <Button
+          title="Save Changes"
+          onPress={handleSave}
+          color={colors.primary}
+        />
+      </View>
 
       <View style={{ marginTop: 20 }}>
         <Button
@@ -81,3 +81,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+```
+
+Let me know if you'd like to add persistent storage (e.g. using `AsyncStorage` or an API call) or theme support next!
