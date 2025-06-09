@@ -5,11 +5,19 @@ import colors from '../constants/colors';
 import commonStyles from '../constants/styles'; // Import common styles
 
 export default function BarberSettings({ navigation }) {
+  const handleBackPress = () => {
+    navigation.navigate('BarberHome');
+  };
+
   return (
     <View style={commonStyles.container}>
       <Text style={commonStyles.title}>Barber Settings</Text>
-      <Button title="Back to Dashboard" onPress={() => navigation.navigate('BarberHome')} color={colors.primary} />
+      <Button
+        title="Back to Dashboard"
+        onPress={handleBackPress}
+        color={colors.primary}
+      />
     </View>
   );
 }
-// No local styles needed
+
